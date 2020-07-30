@@ -1,28 +1,28 @@
-import java.util.*;
-import java.lang.*;
 import java.io.*;
-import java.io.*; 
-
-class GFG { 
-	static int evenbittogglenumber(int n) 
-	{ 
-
-		int res = 0, count = 0; 
-		for (int temp = n; temp > 0; 
-							temp >>= 1) 
-		{ 
-			if (count % 2 == 1) {
-				res |= (1 << count);}	 
-			count++; 
-		} 
-
-		return n ^ res; 
-	} 
-	
-	public static void main(String args[]) 
-	{ 
-		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
-		System.out.println(evenbittogglenumber(n)); 
-	} 
-} 
+import java.util.*;
+class GFG 
+{
+	public static void main (String[] args) 
+	{    
+		Scanner sc=new Scanner(System.in);
+		int testcases=sc.nextInt();
+		
+		while(testcases-->0)
+		{
+		    long n=sc.nextLong();
+		    
+		    int numberOfBits=1+(int)Math.floor(Math.log(n)/Math.log(2)); //finding number of bits
+        
+            if(numberOfBits%2!=0) //if bits are odd
+            {
+                n=n^(1<<(numberOfBits/2)); 
+            }
+            else //else if bits are even
+            {
+                n=n^(1<<(numberOfBits/2));
+                n=n^(1<<((numberOfBits/2)-1));
+            }
+            System.out.println(n);
+		}
+	}
+}
